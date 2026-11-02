@@ -1,0 +1,4 @@
+Supplied final translation snapshot; spacing normalised.
+Pro Inside global      Inside local        Outside local       Outside global
+tcp 203.0.113.1:1024    192.168.20.11:1032   198.51.100.20:80    198.51.100.20:80
+tcp 203.0.113.1:1032    192.168.10.11:1032   198.51.100.20:80    198.51.100.20:80

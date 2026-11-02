@@ -1,0 +1,9 @@
+Recorded session evidence; not independently rerun:
+R1 -> ISP 203.0.113.2: !!!!!; 100% (5/5), min/avg/max 0/0/0 ms.
+ISP -> OUTSIDE-WEB 198.51.100.20: !!!!!; 100% (5/5), min/avg/max 0/0/1 ms.
+R1 -> OUTSIDE-WEB: initially 0/5; later !!!!!, 100% (5/5), min/avg/max 0/0/0 ms.
+Both office PCs opened http://198.51.100.20 (learner-reported).
+PAT snapshot demonstrates both private sources translated to 203.0.113.1, with distinct translated TCP ports.
+
+Troubleshooting: the first supplied Dublin route table had no default route and said Gateway of last resort is not set. A default route via 203.0.113.2 was configured. A subsequent ping still failed; the server gateway and route installation were checked, then the learner supplied success. No exact additional correction was confirmed, so none is claimed.
+The ISP initially entered the setup wizard; Ctrl+C returned to the normal CLI.

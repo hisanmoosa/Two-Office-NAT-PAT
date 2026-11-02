@@ -1,0 +1,41 @@
+REFERENCE: apply on R1-dublin starting from Project 10.
+configure terminal
+interface g0/0
+ip nat inside
+exit
+interface g0/1
+ip nat inside
+exit
+interface g0/2
+ip address 203.0.113.1 255.255.255.252
+ip nat outside
+no shutdown
+exit
+access-list 1 permit 192.168.10.0 0.0.0.255
+access-list 1 permit 192.168.20.0 0.0.0.255
+ip nat inside source list 1 interface g0/2 overload
+ip route 0.0.0.0 0.0.0.0 203.0.113.2
+end
+
+On R2-CORK:
+configure terminal
+ip route 0.0.0.0 0.0.0.0 10.0.0.1
+end
+
+On ISP:
+configure terminal
+hostname ISP
+interface g0/0
+ip address 203.0.113.2 255.255.255.252
+no shutdown
+exit
+interface g0/1
+ip address 198.51.100.1 255.255.255.0
+no shutdown
+end
+
+OUTSIDE-WEB: static IP 198.51.100.20, mask 255.255.255.0, gateway 198.51.100.1; HTTP On.
+From each office PC: open http://198.51.100.20
+On R1-dublin: show ip nat translations
+Save each router: copy running-config startup-config
+Save Packet Tracer: Ctrl+S
